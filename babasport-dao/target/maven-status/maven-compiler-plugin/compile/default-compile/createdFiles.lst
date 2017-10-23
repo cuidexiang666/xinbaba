@@ -1,0 +1,10 @@
+cn\itcast\babasport\mapper\product\SkuMapper.class
+cn\itcast\babasport\mapper\user\BuyerMapper.class
+cn\itcast\babasport\mapper\test\BbsTestMapper.class
+cn\itcast\babasport\mapper\product\ProductMapper.class
+cn\itcast\babasport\mapper\brand\BrandMapper.class
+cn\itcast\babasport\mapper\ad\PositionMapper.class
+cn\itcast\babasport\mapper\order\OrderMapper.class
+cn\itcast\babasport\mapper\ad\AdvertisingMapper.class
+cn\itcast\babasport\mapper\order\DetailMapper.class
+cn\itcast\babasport\mapper\product\ColorMapper.class

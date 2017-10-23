@@ -1,0 +1,6 @@
+cn\itcast\babasport\service\test\BbsTestService.class
+cn\itcast\babasport\service\sku\SkuService.class
+cn\itcast\babasport\service\product\ProductService.class
+cn\itcast\babasport\service\upload\UploadService.class
+cn\itcast\babasport\service\color\ColorService.class
+cn\itcast\babasport\service\brand\BrandService.class

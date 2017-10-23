@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.babasport.mapper.brand.BrandMapper">
+	
+	
+	<resultMap type="brand" id="brandMap">
+		<result column="img_url" property="imgUrl"/>
+		<result column="is_display" property="isDisplay"/>
+	</resultMap>
+	
+	<sql id="query_brand">
+			<if test="name != null">
+				and name like "%"#{name}"%"
+			</if>
+			<if test="isDisplay != null">
+				and is_display = #{isDisplay}
+			</if>
+	</sql>
+	
+	<!-- 查询品牌列表不分页 -->
+	<select id="selectBrandQuery" parameterType="BrandQuery" resultMap="brandMap">
+		select id,name,description,img_url,sort,is_display from bbs_brand
+		<where>
+			<include refid="query_brand"/>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="selectBrandHavePage" parameterType="BrandQuery" resultMap="brandMap">
+		select id,name,description,img_url,sort,is_display from bbs_brand
+		<where>
+			<include refid="query_brand"/>
+			order by id desc
+			<if test="startRow !=null">
+				limit #{startRow},#{pageSize}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryCount" parameterType="BrandQuery" resultType="int">
+		select count(*) from bbs_brand
+		<where>
+			<include refid="query_brand"/>
+		</where>
+	</select>
+	
+	<select id="selectBrandById" parameterType="long" resultMap="brandMap">
+		select id,name,description,img_url,sort,is_display from bbs_brand
+		where id = #{id}
+	</select>
+	
+	<!-- 更新操作 -->
+	<update id="updateBrandById" parameterType="brand">
+		update bbs_brand 
+		<set>
+			<if test="name!=null">
+				name = #{name},
+			</if>
+			<if test="description !=null">
+				description = #{description},
+			</if>
+			<if test="imgUrl!=null">
+				img_url = #{imgUrl},
+			</if>
+			<if test="sort!=null">
+				sort = #{sort},
+			</if>
+			<if test="isDisplay!=null">
+				is_display = #{isDisplay},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 插入操作 -->
+	<insert id="saveBrand" parameterType="brand">
+		insert into bbs_brand(name,description,img_url,sort,is_display)
+		values(#{name},#{description},#{imgUrl},#{sort},#{isDisplay})
+	</insert>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteBratchBrand" parameterType="Long[]">
+		delete from bbs_brand
+		<where>
+			<foreach collection="array" item="id" separator="," open="id in(" close=")">
+				#{id}
+			</foreach>
+		</where>
+	</delete>
+	
+</mapper>

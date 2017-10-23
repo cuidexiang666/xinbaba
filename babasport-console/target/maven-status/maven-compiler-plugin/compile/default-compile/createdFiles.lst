@@ -1,0 +1,7 @@
+cn\itcast\babasport\controller\center\CenterController.class
+cn\itcast\babasport\controller\test\BbsTestController.class
+cn\itcast\babasport\controller\frame\FrameController.class
+cn\itcast\babasport\controller\brand\BrandController.class
+cn\itcast\babasport\controller\upload\UploadController.class
+cn\itcast\babasport\controller\sku\SkuController.class
+cn\itcast\babasport\controller\product\ProductController.class
